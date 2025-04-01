@@ -1,22 +1,22 @@
 import react from "react";
-import axios from 'axios';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import './App.css';
-
-const serverURL = 'http://localhost:3000';
+import Home from "./components/Home/Home";
+import ListaPersonas from "./components/Personas/ListaPersonas";
 
 const App: react.FC = () => {
-  const [message, setMessage] = react.useState<string | undefined> ();
-
-  react.useEffect(() => {
-    (async () => {
-      const response = await axios.get<string>(serverURL);
-      setMessage(response.data);
-    })();
-  }, []);
   return(
     <>
-      {message === undefined ? <h2>Loading ...</h2> : <h2>{message}</h2>}
+     <Router>
+        <div className="app">
+          <Routes>
+           <Route path="/" element={<Home />} />
+           <Route path="/personas" element={<ListaPersonas />} />
+          </Routes>
+        </div>
+     </Router>
+
     </>
   );
 };
