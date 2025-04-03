@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import apiClient from "../apiClient/apiClient";
 import { Persona } from "../../modelos/Persona";
+import { BotonEliminar } from "../Botones/BotonEliminar";
+import { Navbar } from "../Navbar/Navbar";
 
 const ListaPersonas = () => {
     const OBTENERPERSONAS = '/persona';
@@ -11,7 +13,6 @@ const ListaPersonas = () => {
         const obtenerPersonas = async () => {
           try {
             const response = await apiClient.get<Persona[]>(OBTENERPERSONAS);
-            console.log('Datos recibidos:', response.data);
             setPersonas(response.data);
           } catch (err: any) {
             setError('Error al obtener las personas');
@@ -22,12 +23,12 @@ const ListaPersonas = () => {
 
       return (
         <>
+          <Navbar />
           {personas.length === 0 ? (
             <div>No se encontraron personas.</div>
           ) : (
             <>
-            <p>Hola</p>
-            <table className="table-dark">
+            <table className="table table-dark">
               <thead>
                 <tr>
                   <th>DNI</th>
@@ -38,11 +39,13 @@ const ListaPersonas = () => {
               </thead>
               <tbody>
                 {personas.map((persona) => (
-                  <tr key={persona.dni}>
+                  <tr key={persona.id}>
                     <td>{persona.dni}</td>
                     <td>{persona.nombre}</td>
                     <td>{persona.apellido}</td>
-                    <td></td>
+                    <td>
+                      <BotonEliminar id={persona.id} entidad={"personas"}/>
+                    </td>
                   </tr>
                 ))}
               </tbody>

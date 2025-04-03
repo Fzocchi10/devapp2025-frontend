@@ -1,0 +1,33 @@
+.button-container {
+    display: flex;
+    justify-content: center; /* Centra los botones horizontalmente */
+    align-items: center; /* Centra los botones verticalmente */
+    height: 100vh; /* Hace que el contenedor tenga la altura completa de la ventana */
+    flex-direction: column; /* Coloca los botones en una columna */
+} 
+
+.agrandarBoton { 
+    font-size: 50px;  /* Cambia el tamaño del texto */
+    padding: 15px 30px; /* Aumenta el tamaño del padding */
+    margin: 20px;
+    background-color: black; /* Color de fondo */
+    color: white;    /* Color del texto */
+}
+
+body {
+    background-color: grey;
+}
+
+.centrarContenido {
+    display: flex;
+    flex-direction: column;  /* Alinea los elementos en columna */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center;     /* Centra el contenido verticalmente */
+    height: 100vh;           /* Ocupa el 100% de la altura de la ventana */
+    margin: 0;
+    text-align: center;
+}
+.centrarContenido .btn {
+    margin: 10px;
+}
+    

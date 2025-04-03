@@ -1,14 +1,18 @@
 import { Link } from "react-router-dom";
+import { BotonGenerico } from "../Botones/BotonGenerico";
 
 const Home = () => {
     return (
         <>
+        <div className="button-container">
             <Link to="/personas">
-                <button type="button" className="btn btn-dark">Personas</button>
+                <BotonGenerico className={"agrandarBoton"} titulo={"Personas"} funcion={""}/>
             </Link>
             <Link to="/autos">
-                <button type="button" className="btn btn-dark">Autos</button>
+                <BotonGenerico className={"agrandarBoton"} titulo={"Autos"} funcion={""}/>
             </Link>
+        </div>
+            
 
         </>
     )
