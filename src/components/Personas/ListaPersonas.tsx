@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import apiClient from "../apiClient/apiClient";
-import { Persona } from "../../modelos/Persona";
-import { BotonEliminar } from "../Botones/BotonEliminar";
+import { PersonaConID } from "../../modelos/Persona";
 import { Navbar } from "../Navbar/Navbar";
+import { Link } from "react-router-dom";
 
 const ListaPersonas = () => {
     const OBTENERPERSONAS = '/persona';
-    const [personas, setPersonas] = useState<Persona[]>([]);
+    const [personas, setPersonas] = useState<PersonaConID[]>([]);
     const [error, setError] = useState<string>("");
 
     useEffect(() => {
         const obtenerPersonas = async () => {
           try {
-            const response = await apiClient.get<Persona[]>(OBTENERPERSONAS);
+            const response = await apiClient.get<PersonaConID[]>(OBTENERPERSONAS);
             setPersonas(response.data);
           } catch (err: any) {
             setError('Error al obtener las personas');
@@ -24,6 +24,10 @@ const ListaPersonas = () => {
       return (
         <>
           <Navbar />
+          {error}
+          <Link to={"/agregar/persona"}>
+            <button type="button" className="btn btn-success"> Agregar</button>
+          </Link>
           {personas.length === 0 ? (
             <div>No se encontraron personas.</div>
           ) : (
@@ -44,7 +48,9 @@ const ListaPersonas = () => {
                     <td>{persona.nombre}</td>
                     <td>{persona.apellido}</td>
                     <td>
-                      <BotonEliminar id={persona.id} entidad={"personas"}/>
+                      <Link to={`/eliminar/persona/${persona.id}`}>
+                        <button type="button" className="btn btn-danger">Eliminar</button>
+                      </Link>
                     </td>
                   </tr>
                 ))}

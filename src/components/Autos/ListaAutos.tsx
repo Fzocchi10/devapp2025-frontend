@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import apiClient from "../apiClient/apiClient";
 import { Auto } from "../../modelos/Auto";
 import { Navbar } from "../Navbar/Navbar";
-import { BotonEliminar } from "../Botones/BotonEliminar";
+import { Link } from "react-router-dom";
 
 const ListaAutos = () => {
     const OBTENERAUTOS = '/autos';
@@ -23,7 +23,7 @@ const ListaAutos = () => {
 
       return (
         <>
-          <Navbar />
+          <Navbar />{error}
           {autos.length === 0 ? (
             <div>No se encontraron autos.</div>
           ) : (
@@ -46,7 +46,9 @@ const ListaAutos = () => {
                     <td>{auto.modelo}</td>
                     <td>{auto.año}</td>
                     <td>
-                      <BotonEliminar id={auto.id} entidad={"auto"}/>
+                      <Link to={`/autos/${auto.id}`}>
+                        <button type="button" className="btn btn-danger">Eliminar</button>
+                      </Link>
                     </td>
                   </tr>
                 ))}
