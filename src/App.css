@@ -19,6 +19,7 @@ body {
 }
 
 .centrarContenido {
+    background-color: whitesmoke;
     display: flex;
     flex-direction: column;  /* Alinea los elementos en columna */
     justify-content: center; /* Centra el contenido horizontalmente */

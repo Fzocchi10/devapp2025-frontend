@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import apiClient from "../apiClient/apiClient";
 import { Auto } from "../../modelos/Auto";
 import { Navbar } from "../Navbar/Navbar";
-import { Link } from "react-router-dom";
+import { TablaAuto } from "./TablaAuto";
+import { BotonAgregar } from "../Botones/BotonAgregar";
 
 const ListaAutos = () => {
     const OBTENERAUTOS = '/autos';
@@ -23,39 +24,10 @@ const ListaAutos = () => {
 
       return (
         <>
-          <Navbar />{error}
-          {autos.length === 0 ? (
-            <div>No se encontraron autos.</div>
-          ) : (
-            <>
-            <table className="table table-dark">
-              <thead>
-                <tr>
-                  <th>Patente</th>
-                  <th>Marca</th>
-                  <th>Modelo</th>
-                  <th>Año</th>
-                  <th>Acciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                {autos.map((auto) => (
-                  <tr key={auto.id}>
-                    <td>{auto.patente}</td>
-                    <td>{auto.marca}</td>
-                    <td>{auto.modelo}</td>
-                    <td>{auto.año}</td>
-                    <td>
-                      <Link to={`/autos/${auto.id}`}>
-                        <button type="button" className="btn btn-danger">Eliminar</button>
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            </>
-          )}
+          <Navbar />
+          {error}
+          <BotonAgregar entidad={"autos"} />
+          <TablaAuto autos={autos}/>
         </>
       );
 }
