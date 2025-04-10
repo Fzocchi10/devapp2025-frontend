@@ -2,32 +2,37 @@ import { useEffect, useState } from "react";
 import apiClient from "../apiClient/apiClient";
 import { PersonaConID } from "../../modelos/Persona";
 import { Navbar } from "../Navbar/Navbar";
-import { Link } from "react-router-dom";
+import { BotonEliminar } from "../Botones/BotonEliminar";
+import { BotonAgregar } from "../Botones/BotonAgregar";
+import { BotonInfo } from "../Botones/BotonInfo";
+import { BotonModificar } from "../Botones/BotonModificar";
 
 const ListaPersonas = () => {
     const OBTENERPERSONAS = '/persona';
     const [personas, setPersonas] = useState<PersonaConID[]>([]);
     const [error, setError] = useState<string>("");
 
+    const obtenerPersonas = async () => {
+      try {
+        const response = await apiClient.get<PersonaConID[]>(OBTENERPERSONAS);
+        setPersonas(response.data);
+      } catch (err: any) {
+        setError('Error al obtener las personas');
+      }
+    };
+    
     useEffect(() => {
-        const obtenerPersonas = async () => {
-          try {
-            const response = await apiClient.get<PersonaConID[]>(OBTENERPERSONAS);
-            setPersonas(response.data);
-          } catch (err: any) {
-            setError('Error al obtener las personas');
-          }
-        };
-        obtenerPersonas();
+         obtenerPersonas();
       }, []);
 
       return (
         <>
           <Navbar />
+          
           {error}
-          <Link to={"/agregar/persona"}>
-            <button type="button" className="btn btn-success"> Agregar</button>
-          </Link>
+
+          <BotonAgregar entidad={"personas"} />
+
           {personas.length === 0 ? (
             <div>No se encontraron personas.</div>
           ) : (
@@ -48,9 +53,9 @@ const ListaPersonas = () => {
                     <td>{persona.nombre}</td>
                     <td>{persona.apellido}</td>
                     <td>
-                      <Link to={`/eliminar/persona/${persona.id}`}>
-                        <button type="button" className="btn btn-danger">Eliminar</button>
-                      </Link>
+                      <BotonInfo entidad={"personas"} id={persona.id}/>
+                      <BotonModificar entidad={"personas"} id={persona.id} />
+                      <BotonEliminar id={persona.id} entidad={"personas"}/>
                     </td>
                   </tr>
                 ))}
