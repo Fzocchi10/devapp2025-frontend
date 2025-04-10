@@ -10,7 +10,7 @@ export type Persona = {
     nombre : string,
     apellido : string,
     dni : string,
-    fechaNacimiento: Date,
+    fechaNacimiento: Date | null,
     genero: Genero | null,
     donanteDeOrganos: boolean,
     autos: Auto[]

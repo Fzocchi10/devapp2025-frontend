@@ -30,4 +30,8 @@ body {
 .centrarContenido .btn {
     margin: 10px;
 }
-    
+
+.mensaje-error {
+    color:yellow;
+    background-color: black;
+}
