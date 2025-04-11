@@ -8,7 +8,7 @@ export const EliminarAuto= () => {
     const [errMsg, setErrMsg] = useState<string>('');
     const navigate = useNavigate();
 
-    const ELIMINAR_AUTO = `/auto/${id}`; 
+    const ELIMINAR_AUTO = `/autos/${id}`; 
 
     const eliminar = async () => {
         try {

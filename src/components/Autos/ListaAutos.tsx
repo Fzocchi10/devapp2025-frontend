@@ -3,7 +3,6 @@ import apiClient from "../apiClient/apiClient";
 import { Auto } from "../../modelos/Auto";
 import { Navbar } from "../Navbar/Navbar";
 import { TablaAuto } from "./TablaAuto";
-import { BotonAgregar } from "../Botones/BotonAgregar";
 
 const ListaAutos = () => {
     const OBTENERAUTOS = '/autos';
@@ -26,7 +25,6 @@ const ListaAutos = () => {
         <>
           <Navbar />
           {error}
-          <BotonAgregar entidad={"autos"} />
           <TablaAuto autos={autos}/>
         </>
       );
