@@ -3,7 +3,7 @@ import apiClient from "../apiClient/apiClient";
 import { PersonaConID } from "../../modelos/Persona";
 import { Navbar } from "../Navbar/Navbar";
 import { BotonEliminar } from "../Botones/BotonEliminar";
-import { BotonAgregar } from "../Botones/BotonAgregar";
+import { BotonAgregarPersona } from "../Botones/BotonAgregarPersona";
 import { BotonInfo } from "../Botones/BotonInfo";
 import { BotonModificar } from "../Botones/BotonModificar";
 
@@ -31,7 +31,7 @@ const ListaPersonas = () => {
           
           {error}
 
-          <BotonAgregar entidad={"personas"} />
+          <BotonAgregarPersona />
 
           {personas.length === 0 ? (
             <div>No se encontraron personas.</div>

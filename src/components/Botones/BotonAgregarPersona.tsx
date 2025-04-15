@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom"
 
 
-export const BotonAgregar = ({entidad}) => {
+export const BotonAgregarPersona = () => {
     return(
         <>
-        <Link to={`/${entidad}/agregar`}>
+        <Link to={`/personas/agregar`}>
             <button type="button" className="btn btn-success"> Agregar</button>
         </Link>
         </>

@@ -10,6 +10,8 @@ import AgregarPersona from "./components/Personas/AgregarPersona";
 import InfoPersona from "./components/Personas/InfoPersona";
 import { EliminarAuto } from "./components/Autos/EliminarAuto";
 import { ModificarPersona } from "./components/Personas/ModificarPersona";
+import { AgregarAuto } from "./components/Autos/AgregarAuto";
+import InfoAuto from "./components/Autos/InfoAuto";
 
 const App: react.FC = () => {
   return(
@@ -29,6 +31,8 @@ const App: react.FC = () => {
            //Rutas de autos
            <Route path="/autos" element={<ListaAutos />} />
            <Route path="/autos/eliminar/:id" element={<EliminarAuto/>} />
+           <Route path="/autos/agregar/:id" element={<AgregarAuto/>} />
+           <Route path="/autos/info/:id" element={<InfoAuto/>} />
           </Routes>
         </div>
      </Router>

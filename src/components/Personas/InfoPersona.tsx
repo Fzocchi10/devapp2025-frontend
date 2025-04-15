@@ -5,6 +5,7 @@ import { Auto } from "../../modelos/Auto";
 import apiClient from "../apiClient/apiClient";
 import { Navbar } from "../Navbar/Navbar";
 import { TablaAuto } from "../Autos/TablaAuto";
+import { BotonAgregarAuto } from "../Botones/BotonAgregarAuto";
 
 const InfoPersona = () => {
     const {id} = useParams();
@@ -19,7 +20,6 @@ const InfoPersona = () => {
         try {
           const response = await apiClient.get<PersonaConID>(OBTENER_PERSONA);
           setPersona(response.data);
-          console.log(persona);
         } catch (err: any) {
           setError('Error al obtener la persona');
         }
@@ -29,7 +29,6 @@ const InfoPersona = () => {
         try {
           const response = await apiClient.get<Auto[]>(OBTENER_AUTOS);
           setAutos(response.data);
-          console.log(autos);
         } catch (err: any) {
           setError('Error al obtener los autos de la persona');
         }
@@ -54,6 +53,8 @@ const InfoPersona = () => {
             <p><strong>Dni:</strong>  {persona?.dni}</p>
             <p><strong>Fecha de nacimiento:</strong>  {persona?.fechaNacimiento}</p>
             <p><strong>Es donante:</strong>  {persona?.donanteDeOrganos ? 'Si' : 'No'}</p>
+
+            <BotonAgregarAuto id={persona?.id} />
 
             <TablaAuto autos={autos}/>
         </div>
