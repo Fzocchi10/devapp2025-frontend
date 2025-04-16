@@ -20,3 +20,14 @@ export type AutoSinID = {
     motor: string,
     dueñoId: number;
 }
+
+export type AutoInfo = {
+    marca: string,
+    modelo : string,
+    año: number,
+    patente : string,
+    color: string,
+    numeroChasis: string,
+    motor: string,
+    dueño: string;
+}

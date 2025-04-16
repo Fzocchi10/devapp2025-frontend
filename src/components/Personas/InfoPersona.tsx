@@ -34,9 +34,16 @@ const InfoPersona = () => {
         }
       };
 
+      const dateAText = (date: string | Date) => {
+        const fecha = new Date(date);
+        const año = fecha.getFullYear();
+        const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+        const dia = String(fecha.getDate()).padStart(2, '0');
+        return `${dia}-${mes}-${año}`;
+    };
 
 
-      useEffect(() => {
+    useEffect(() => {
         obtenerPersona();
         obtenerAutos();
      }, []);
@@ -51,9 +58,9 @@ const InfoPersona = () => {
             <p><strong>Nombre:</strong>  {persona?.nombre}</p>
             <p><strong>Apellido:</strong>  {persona?.apellido}</p>
             <p><strong>Dni:</strong>  {persona?.dni}</p>
-            <p><strong>Fecha de nacimiento:</strong>  {persona?.fechaNacimiento}</p>
-            <p><strong>Es donante:</strong>  {persona?.donanteDeOrganos ? 'Si' : 'No'}</p>
-
+            <p><strong>Fecha de nacimiento:</strong>  {dateAText(persona?.fechaNacimiento)}</p>
+            <p><strong>Es donante:</strong>  {String(persona?.donanteDeOrganos) === "true" ? 'Si' : 'No'}</p>
+            <p><strong>Genero:</strong> {persona?.genero}</p>
             <BotonAgregarAuto id={persona?.id} />
 
             <TablaAuto autos={autos}/>

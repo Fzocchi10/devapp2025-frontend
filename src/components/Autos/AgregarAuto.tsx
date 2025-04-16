@@ -11,7 +11,7 @@ export const AgregarAuto = () => {
     const [auto, setAuto] = useState<AutoSinID>({
         marca: '',
         modelo: '',
-        año: 0, 
+        año: Number(''), 
         patente: '',
         color: '',
         numeroChasis: '',
