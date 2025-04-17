@@ -11,6 +11,7 @@ import InfoPersona from "./components/Personas/InfoPersona";
 import { EliminarAuto } from "./components/Autos/EliminarAuto";
 import { ModificarPersona } from "./components/Personas/ModificarPersona";
 import { AgregarAuto } from "./components/Autos/AgregarAuto";
+import { ModificarAuto } from "./components/Autos/ModificarAuto";
 import InfoAuto from "./components/Autos/InfoAuto";
 
 const App: react.FC = () => {
@@ -33,6 +34,7 @@ const App: react.FC = () => {
            <Route path="/autos/eliminar/:id" element={<EliminarAuto/>} />
            <Route path="/autos/agregar/:id" element={<AgregarAuto/>} />
            <Route path="/autos/info/:id" element={<InfoAuto/>} />
+           <Route path="/autos/editar/:id" element={<ModificarAuto/>} />
           </Routes>
         </div>
      </Router>

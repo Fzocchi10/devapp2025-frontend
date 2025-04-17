@@ -2,10 +2,8 @@ import { useEffect, useState } from "react";
 import apiClient from "../apiClient/apiClient";
 import { PersonaConID } from "../../modelos/Persona";
 import { Navbar } from "../Navbar/Navbar";
-import { BotonEliminar } from "../Botones/BotonEliminar";
 import { BotonAgregarPersona } from "../Botones/BotonAgregarPersona";
-import { BotonInfo } from "../Botones/BotonInfo";
-import { BotonModificar } from "../Botones/BotonModificar";
+import { AccionesTabla } from "../Botones/AccionesTabla";
 
 const ListaPersonas = () => {
     const OBTENERPERSONAS = '/persona';
@@ -31,31 +29,33 @@ const ListaPersonas = () => {
           
           {error}
 
-          <BotonAgregarPersona />
-
           {personas.length === 0 ? (
             <div>No se encontraron personas.</div>
           ) : (
             <>
-            <table className="table table-dark">
+            <div className="position-relative mb-4">
+              <h2 className="text-center my-4">Lista de Personas</h2>
+            <div className="position-absolute end-0 top-0">
+                   <BotonAgregarPersona />
+            </div>
+            </div>
+            <table className="table table-striped table-hover table-bordered">
               <thead>
                 <tr>
-                  <th>DNI</th>
-                  <th>Nombre</th>
-                  <th>Apellido</th>
-                  <th>Acciones</th>
+                  <th className="text-center">DNI</th>
+                  <th className="text-center">Nombre</th>
+                  <th className="text-center">Apellido</th>
+                  <th className="text-center">Acciones</th>
                 </tr>
               </thead>
               <tbody>
                 {personas.map((persona) => (
                   <tr key={persona.id}>
-                    <td>{persona.dni}</td>
-                    <td>{persona.nombre}</td>
-                    <td>{persona.apellido}</td>
-                    <td>
-                      <BotonInfo entidad={"personas"} id={persona.id}/>
-                      <BotonModificar entidad={"personas"} id={persona.id} />
-                      <BotonEliminar id={persona.id} entidad={"personas"}/>
+                    <td className="text-center">{persona.dni}</td>
+                    <td className="text-center">{persona.nombre}</td>
+                    <td className="text-center">{persona.apellido}</td>
+                    <td className="text-center">
+                      <AccionesTabla entidad={"personas"} id={persona.id} />
                     </td>
                   </tr>
                 ))}

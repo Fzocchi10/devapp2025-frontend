@@ -28,16 +28,23 @@ const InfoAuto = () => {
         <>
         <Navbar />
         {error}
-        <div className="centrarContenido">
-            <p><strong>Marca:</strong>  {auto?.marca}</p>
-            <p><strong>Modelo:</strong>  {auto?.modelo}</p>
-            <p><strong>Patente:</strong>  {auto?.patente}</p>
-            <p><strong>Año:</strong>  {auto?.año}</p>
-            <p><strong>Color:</strong>  {auto?.color}</p>
-            <p><strong>Motor:</strong>  {auto?.motor}</p>
-            <p><strong>Numero de chasis:</strong>  {auto?.numeroChasis}</p>
-            <p><strong>Dueño:</strong>  {auto?.dueño}</p>
-        </div>
+        <div className="row justify-content-center">
+          <div className="col-md-8">
+            <div className="card shadow p-4 mb-4">
+              <h3 className="card-title text-center mb-4">Informacion del auto</h3>
+                <div className="card-body">
+                <p><strong>Marca:</strong>  {auto?.marca}</p>
+                <p><strong>Modelo:</strong>  {auto?.modelo}</p>
+                <p><strong>Patente:</strong>  {auto?.patente}</p>
+                <p><strong>Año:</strong>  {auto?.año}</p>
+                <p><strong>Color:</strong>  {auto?.color}</p>
+                <p><strong>Motor:</strong>  {auto?.motor}</p>
+                <p><strong>Numero de chasis:</strong>  {auto?.numeroChasis}</p>
+                <p><strong>Dueño:</strong>  {auto?.dueño}</p>
+              </div>
+            </div>
+            </div>
+          </div>
         </>
     )
 }

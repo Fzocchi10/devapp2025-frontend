@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { PersonaModificar } from "../../modelos/Persona";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import apiClient from "../apiClient/apiClient";
 import { Navbar } from "../Navbar/Navbar";
 
@@ -58,80 +58,73 @@ export const ModificarPersona = () => {
 
     return (
         <>
-            <Navbar />
-            <div className="centrarContenido">
-                <h1>Modificar Persona</h1>
-                <form onSubmit={handleSubmit}>
-                    <label>
-                        Nombre:
-                        <input
-                            type="text"
-                            name="nombre"
-                            value={persona.nombre}
-                            onChange={cambio}
-                        />
-                    </label>
-                    <br />
-                    <label>
-                        Apellido:
-                        <input
-                            type="text"
-                            name="apellido"
-                            value={persona.apellido}
-                            onChange={cambio}
-                        />
-                    </label>
-                    <br />
-                    <label>
-                        DNI:
-                        <input
-                            type="text"
-                            name="dni"
-                            value={persona.dni}
-                            onChange={cambio}
-                        />
-                    </label>
-                    <br />
-                    <label>
-                        ¿Es donante de órganos?
-                        <input
-                            type="checkbox"
-                            name="donanteDeOrganos"
-                            checked={persona.donanteDeOrganos}
-                            onChange={() => setPersona({ ...persona, donanteDeOrganos: !persona.donanteDeOrganos })}
-                        />
-                    </label>
-                    <br />
-                    <label>
-                        Fecha de Nacimiento
-                        <input
-                            type="date"
-                            name="fechaNacimiento"
-                            value={persona.fechaNacimiento ? dateAText(new Date(persona.fechaNacimiento)) : ''}
-                            onChange={cambio}
-                        />
-                    </label>
-                    <br />
-                    <label>
-                        Género:
-                        <select
-                            name="genero"
-                            value={persona.genero || ''}
-                            onChange={cambio}
-                        >
-                            <option value="">Seleccionar género</option>
-                            <option value="Masculino">Masculino</option>
-                            <option value="Femenino">Femenino</option>
-                            <option value="No-Binario">No-Binario</option>
-                        </select>
-                    </label>
-                    <br />
-                    <button type="submit" onClick={modificar}>Confirmar</button>
-                </form>
-                {modificada ? 
-                    <p>La persona fue modificada con éxito.</p> : 
-                    <p className="mensaje-error">{error}</p>}
+    <Navbar />
+    <div className="container mt-5 d-flex justify-content-center">
+        <div className="card p-4 shadow" style={{ maxWidth: '600px', width: '100%' }}>
+        <h2 className="text-center mb-4">Modificar Persona</h2>
+
+        <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+            <label className="form-label">Nombre</label>
+            <input type="text" className="form-control" name="nombre" value={persona.nombre} onChange={cambio} />
             </div>
-        </>
-    );
+
+            <div className="mb-3">
+            <label className="form-label">Apellido</label>
+            <input type="text" className="form-control" name="apellido" value={persona.apellido} onChange={cambio} />
+            </div>
+
+            <div className="mb-3">
+            <label className="form-label">DNI</label>
+            <input type="text" className="form-control" name="dni" value={persona.dni} onChange={cambio} />
+            </div>
+
+            <div className="mb-3 form-check">
+            <input type="checkbox" className="form-check-input" name="donanteDeOrganos" checked={persona.donanteDeOrganos} onChange={() =>
+                setPersona({ ...persona, donanteDeOrganos: !persona.donanteDeOrganos })} />
+            <label className="form-check-label">¿Es donante de órganos?</label>
+            </div>
+
+            <div className="mb-3">
+            <label className="form-label">Fecha de nacimiento</label>
+            <input
+                type="date"
+                className="form-control"
+                name="fechaNacimiento"
+                value={persona.fechaNacimiento ? dateAText(persona.fechaNacimiento) : ''}
+                onChange={cambio}
+            />
+            </div>
+
+            <div className="mb-3">
+            <label className="form-label">Género</label>
+            <select className="form-select" name="genero" value={persona.genero || ''} onChange={cambio}>
+                <option value="">Seleccionar género</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+                <option value="No-Binario">No-Binario</option>
+            </select>
+            </div>
+
+            <div className="d-flex justify-content-center gap-3">
+            <button type="submit" className="btn btn-primary" onClick={modificar}>
+                Modificar
+            </button>
+            <Link to="/personas">
+                <button type="button" className="btn btn-danger">Cancelar</button>
+            </Link>
+            </div>
+
+            <div className="text-center mt-3">
+            {modificada ? (
+                <p className="text-success">La persona fue modificada con éxito.</p>
+            ) : (
+                <p className="text-danger">{error}</p>
+            )}
+            </div>
+        </form>
+        </div>
+    </div>
+    </>
+    )
 };

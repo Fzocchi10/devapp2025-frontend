@@ -10,18 +10,19 @@ export type Auto = {
     dueñoId: number;
 }
 
-export type AutoSinID = {
-    marca: string,
-    modelo : string,
-    año: number,
-    patente : string,
-    color: string,
-    numeroChasis: string,
-    motor: string,
-    dueñoId: number;
+export type AutoAgregar = {
+    marca?: string,
+    modelo? : string,
+    año?: number,
+    patente ?: string,
+    color?: string,
+    numeroChasis?: string,
+    motor?: string,
+    dueñoId?: number;
 }
 
 export type AutoInfo = {
+    id: number,
     marca: string,
     modelo : string,
     año: number,
@@ -30,4 +31,14 @@ export type AutoInfo = {
     numeroChasis: string,
     motor: string,
     dueño: string;
+}
+
+export type AutoModificar = {
+    marca?: string,
+    modelo? : string,
+    año?: number,
+    patente? : string,
+    color?: string,
+    numeroChasis?: string,
+    motor?: string
 }
