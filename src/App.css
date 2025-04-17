@@ -4,6 +4,7 @@
     align-items: center; /* Centra los botones verticalmente */
     height: 100vh; /* Hace que el contenedor tenga la altura completa de la ventana */
     flex-direction: column; /* Coloca los botones en una columna */
+    margin: 5px 5px;
 } 
 
 .agrandarBoton { 
@@ -15,24 +16,9 @@
 }
 
 body {
-    background-color: grey;
+    background-color: #f8f9fa;
 }
 
-.centrarContenido {
-    background-color: whitesmoke;
-    display: flex;
-    flex-direction: column;  /* Alinea los elementos en columna */
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: center;     /* Centra el contenido verticalmente */
-    height: 100vh;           /* Ocupa el 100% de la altura de la ventana */
-    margin: 0;
-    text-align: center;
-}
 .centrarContenido .btn {
     margin: 10px;
-}
-
-.mensaje-error {
-    color:yellow;
-    background-color: black;
 }

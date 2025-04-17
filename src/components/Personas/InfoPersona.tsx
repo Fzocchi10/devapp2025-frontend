@@ -34,9 +34,16 @@ const InfoPersona = () => {
         }
       };
 
+      const dateAText = (date: string | Date) => {
+        const fecha = new Date(date);
+        const año = fecha.getFullYear();
+        const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+        const dia = String(fecha.getDate()).padStart(2, '0');
+        return `${dia}-${mes}-${año}`;
+    };
 
 
-      useEffect(() => {
+    useEffect(() => {
         obtenerPersona();
         obtenerAutos();
      }, []);
@@ -46,19 +53,39 @@ const InfoPersona = () => {
     return (
         <>
         <Navbar />
-        {error}
-        <div className="centrarContenido">
-            <p><strong>Nombre:</strong>  {persona?.nombre}</p>
-            <p><strong>Apellido:</strong>  {persona?.apellido}</p>
-            <p><strong>Dni:</strong>  {persona?.dni}</p>
-            <p><strong>Fecha de nacimiento:</strong>  {persona?.fechaNacimiento}</p>
-            <p><strong>Es donante:</strong>  {persona?.donanteDeOrganos ? 'Si' : 'No'}</p>
 
-            <BotonAgregarAuto id={persona?.id} />
+        <div className="container mt-5">
+            {error && (
+                <div className="alert alert-danger text-center">{error}</div>
+            )}
 
-            <TablaAuto autos={autos}/>
+            <div className="row justify-content-center">
+                <div className="col-md-8">
+                    <div className="card shadow p-4 mb-4">
+                        <h3 className="card-title text-center mb-4">Datos de la Persona</h3>
+                        <div className="card-body">
+                            <p><strong>Nombre:</strong> {persona?.nombre}</p>
+                            <p><strong>Apellido:</strong> {persona?.apellido}</p>
+                            <p><strong>DNI:</strong> {persona?.dni}</p>
+                            <p><strong>Fecha de nacimiento:</strong> {dateAText(persona?.fechaNacimiento)}</p>
+                            <p><strong>Es donante:</strong> {String(persona?.donanteDeOrganos) === "true" ? 'Sí' : 'No'}</p>
+                            <p><strong>Género:</strong> {persona?.genero}</p>
+                        </div>
+                    </div>
+
+                    <div className="d-flex justify-content-center mb-4">
+                        <BotonAgregarAuto id={persona?.id} />
+                    </div>
+
+                    <div className="card shadow p-4">
+                        <h4 className="card-title text-center mb-3">Listado de Autos</h4>
+                        <TablaAuto autos={autos} />
+                    </div>
+                </div>
+            </div>
         </div>
-        </>
+    </>
+
     )
 }
 

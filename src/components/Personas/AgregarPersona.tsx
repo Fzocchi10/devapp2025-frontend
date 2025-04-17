@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Persona } from "../../modelos/Persona";
 import apiClient from "../apiClient/apiClient";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Navbar } from "../Navbar/Navbar";
 
 
@@ -64,79 +64,76 @@ const AgregarPersona = () => {
     return(
         <>
             <Navbar />
-            <div className="centrarContenido">
-            <h1>Agregar Persona</h1>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Nombre:  
-                    <input 
-                        type="text" 
-                        name="nombre" 
-                        value={persona.nombre} 
-                        onChange={cambio} 
-                    />
-                </label>
-                <br />
-                <label>
-                    Apellido:  
-                    <input 
-                        type="text" 
-                        name="apellido" 
-                        value={persona.apellido} 
-                        onChange={cambio} 
-                    />
-                </label>
-                <br />
-                <label>
-                    DNI:  
-                    <input 
-                        type="text" 
-                        name="dni" 
-                        value={persona.dni} 
-                        onChange={cambio} 
-                    />
-                </label>
-                <br />
-                <label>
-                    ¿Es donante de órganos?
-                    <input 
-                        type="checkbox" 
-                        name="donanteDeOrganos" 
-                        checked={persona.donanteDeOrganos} 
-                        onChange={() => setPersona({ ...persona, donanteDeOrganos: !persona.donanteDeOrganos })} 
-                    />
-                </label>
-                <br />
-                <label>
-                    Fecha de Nacimiento
-                    <input 
-                        type="date" 
-                        name="fechaNacimiento" 
-                        value={persona.fechaNacimiento ? dateAText(persona.fechaNacimiento): ''}
-                        onChange={cambio} 
-                    />
-                </label>
-                <br />
-                <label>
-                Género:
-                <select
-                    name="genero"
-                    value={persona.genero || ''}
-                    onChange={cambio}
-                >
-                    <option value="">Seleccionar género</option>
-                    <option value="Masculino">Masculino</option>
-                    <option value="Femenino">Femenino</option>
-                    <option value="No-Binario">No-Binario</option>
-                </select>
-                </label>
-                <br />
-                <button type="submit" onClick={agregar}>Confirmar</button>
-            </form>
-            {agregada ? 
-                <p>La persona fue agregada con éxito.</p> : 
-                <p className="mensaje-error">{error}</p>}
-        </div>
+
+            <div className="container mt-5">
+            <div className="row justify-content-center">
+                <div className="container d-flex justify-content-center mt-5">
+                <div className="card p-4 shadow" style={{ maxWidth: '600px', width: '100%' }}>
+                    <h2 className="text-center mb-4">Agregar Persona</h2>
+
+                    <form onSubmit={handleSubmit}>
+                    <div className="mb-3">
+                        <label className="form-label">Nombre</label>
+                        <input type="text" className="form-control" name="nombre" value={persona.nombre} onChange={cambio} />
+                    </div>
+
+                    <div className="mb-3">
+                        <label className="form-label">Apellido</label>
+                        <input type="text" className="form-control" name="apellido" value={persona.apellido} onChange={cambio} />
+                    </div>
+
+                    <div className="mb-3">
+                        <label className="form-label">DNI</label>
+                        <input type="text" className="form-control" name="dni" value={persona.dni} onChange={cambio} />
+                    </div>
+
+                    <div className="mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="donanteDeOrganos" checked={persona.donanteDeOrganos} onChange={cambio} />
+                        <label className="form-check-label">¿Es donante de órganos?</label>
+                    </div>
+
+                    <div className="mb-3">
+                        <label className="form-label">Fecha de nacimiento</label>
+                        <input
+                        type="date"
+                        className="form-control"
+                        name="fechaNacimiento"
+                        value={persona.fechaNacimiento ? dateAText(persona.fechaNacimiento) : ''}
+                        onChange={cambio}
+                        />
+                    </div>
+
+                    <div className="mb-3">
+                        <label className="form-label">Género</label>
+                        <select className="form-select" name="genero" value={persona.genero || ''} onChange={cambio}>
+                        <option value="">Seleccionar género</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="No-Binario">No-Binario</option>
+                        </select>
+                    </div>
+
+                    <div className="d-flex justify-content-center gap-3">
+                        <button type="submit" className="btn btn-primary" onClick={agregar}>
+                            Confirmar
+                        </button>
+                        <Link to="/personas">
+                            <button type="button" className="btn btn-danger">
+                            Cancelar
+                            </button>
+                        </Link>
+                    </div>
+                    </form>
+
+                    <div className="mt-3 text-center">
+                    {agregada && <div className="alert alert-success">La persona fue agregada con éxito.</div>}
+                    {error && <div className="alert alert-danger">{error}</div>}
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+
         </>
     )
 }

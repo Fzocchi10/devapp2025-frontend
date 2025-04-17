@@ -1,21 +1,22 @@
 import { useState } from "react";
-import { AutoSinID } from "../../modelos/Auto";
+import { AutoAgregar } from "../../modelos/Auto";
 import apiClient from "../apiClient/apiClient";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { Navbar } from "../Navbar/Navbar";
 
 export const AgregarAuto = () => {
     const { id } = useParams();
     const AGREGAR_AUTO = `/autos`;
     const navegar = useNavigate();
 
-    const [auto, setAuto] = useState<AutoSinID>({
-        marca: '',
-        modelo: '',
-        año: 0, 
-        patente: '',
-        color: '',
-        numeroChasis: '',
-        motor: '',
+    const [auto, setAuto] = useState<AutoAgregar>({
+        marca: undefined,
+        modelo: undefined,
+        año: undefined, 
+        patente: undefined,
+        color: undefined,
+        numeroChasis: undefined,
+        motor: undefined,
         dueñoId: Number(id)
     });
 
@@ -44,7 +45,6 @@ export const AgregarAuto = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        await agregar();
     };
 
     const cambio = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -65,87 +65,112 @@ export const AgregarAuto = () => {
 
     return (
         <>
-            <div className="centrarContenido">
-                <h1>Agregar Auto</h1>
-                <form onSubmit={handleSubmit}>
-                    <label>
-                        Marca:
-                        <input
-                            type="text"
-                            name="marca"
-                            value={auto.marca}
-                            onChange={cambio}
-                        />
-                    </label>
-                    <br />
-                    <label>
-                        Modelo:
-                        <input
-                            type="text"
-                            name="modelo"
-                            value={auto.modelo}
-                            onChange={cambio}
-                        />
-                    </label>
-                    <br />
-                    <label>
-                        Año:
-                        <input
-                            type="text"
-                            name="año"
-                            value={auto.año}
-                            onChange={cambio}
-                        />
-                    </label>
-                    <br />
-                    <label>
-                        Patente:
-                        <input
-                            type="text"
-                            name="patente"
-                            value={auto.patente}
-                            onChange={cambio}
-                        />
-                    </label>
-                    <br />
-                    <label>
-                        Color:
-                        <input
-                            type="text"
-                            name="color"
-                            value={auto.color}
-                            onChange={cambio}
-                        />
-                    </label>
-                    <br />
-                    <label>
-                        Número de chasis:
-                        <input
-                            type="text"
-                            name="numeroChasis"
-                            value={auto.numeroChasis}
-                            onChange={cambio}
-                        />
-                    </label>
-                    <br />
-                    <label>
-                        Motor:
-                        <input
-                            type="text"
-                            name="motor"
-                            value={auto.motor}
-                            onChange={cambio}
-                        />
-                    </label>
-                    <br />
-                    <button type="submit">Agregar</button>
-                </form>
-                {agregada ? (
-                    <p>Auto agregado con éxito</p>
-                ) : (
-                    error && <p className="mensaje-error">{error}</p>
-                )}
+        <Navbar />
+
+        <div className="container mt-5">
+            <div className="row justify-content-center">
+                <div className="container d-flex justify-content-center mt-5">
+                    <div className="card p-4 shadow" style={{ maxWidth: '600px', width: '100%' }}>
+                        <h2 className="text-center mb-4">Agregar Auto</h2>
+
+                        <form onSubmit={handleSubmit}>
+                            <div className="mb-3">
+                                <label className="form-label">Marca</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="marca"
+                                    value={auto.marca}
+                                    onChange={cambio}
+                                />
+                            </div>
+
+                            <div className="mb-3">
+                                <label className="form-label">Modelo</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="modelo"
+                                    value={auto.modelo}
+                                    onChange={cambio}
+                                />
+                            </div>
+
+                            <div className="mb-3">
+                                <label className="form-label">Año</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="año"
+                                    value={auto.año}
+                                    onChange={cambio}
+                                />
+                            </div>
+
+                            <div className="mb-3">
+                                <label className="form-label">Patente</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="patente"
+                                    value={auto.patente}
+                                    onChange={cambio}
+                                />
+                            </div>
+
+                            <div className="mb-3">
+                                <label className="form-label">Color</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="color"
+                                    value={auto.color}
+                                    onChange={cambio}
+                                />
+                            </div>
+
+                            <div className="mb-3">
+                                <label className="form-label">Número de chasis</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="numeroChasis"
+                                    value={auto.numeroChasis}
+                                    onChange={cambio}
+                                />
+                            </div>
+
+                            <div className="mb-3">
+                                <label className="form-label">Motor</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="motor"
+                                    value={auto.motor}
+                                    onChange={cambio}
+                                />
+                            </div>
+
+                            <div className="d-flex justify-content-center gap-3">
+                                <button type="submit" className="btn btn-primary" onClick={agregar}>
+                                    Agregar
+                                </button>
+                                <Link to="/autos">
+                                    <button type="button" className="btn btn-danger">
+                                        Cancelar
+                                    </button>
+                                </Link>
+                            </div>
+                        </form>
+
+                        <div className="mt-3 text-center">
+                            {agregada && <div className="alert alert-success">Auto agregado con éxito.</div>}
+                            {error && <div className="alert alert-danger">{error}</div>}
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
         </>
     );
 };
