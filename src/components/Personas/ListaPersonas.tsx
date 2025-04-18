@@ -26,6 +26,12 @@ const ListaPersonas = () => {
       return (
         <>
           <Navbar />
+          <div className="position-relative mb-4">
+              <h2 className="text-center my-4">Lista de Personas</h2>
+            <div className="position-absolute end-0 top-0">
+                   <BotonAgregarPersona />
+            </div>
+            </div>
           
           {error}
 
@@ -33,12 +39,6 @@ const ListaPersonas = () => {
             <div>No se encontraron personas.</div>
           ) : (
             <>
-            <div className="position-relative mb-4">
-              <h2 className="text-center my-4">Lista de Personas</h2>
-            <div className="position-absolute end-0 top-0">
-                   <BotonAgregarPersona />
-            </div>
-            </div>
             <table className="table table-striped table-hover table-bordered">
               <thead>
                 <tr>
