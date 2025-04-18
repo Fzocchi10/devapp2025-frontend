@@ -21,6 +21,23 @@ const AgregarPersona = () => {
     const navigate = useNavigate();
 
     const agregar = async () => {
+        const regexNombreApellido = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/;
+        const regexDni = /^\d+$/;
+
+        if (!regexNombreApellido.test(persona.nombre)) {
+            setError("El nombre solo debe contener letras.");
+            return;
+        }
+
+        if (!regexNombreApellido.test(persona.apellido)) {
+            setError("El apellido solo debe contener letras.");
+            return;
+            }
+
+        if (!regexDni.test(persona.dni)) {
+            setError("El DNI solo debe contener números.");
+            return;
+        }
         try {
             await apiClient.post(AGREGARPERSONA, JSON.stringify( persona ));
             setAgregada(true);
@@ -39,7 +56,7 @@ const AgregarPersona = () => {
     const dateAText = (date: Date) => {
         const año = date.getFullYear();
         const mes = String(date.getMonth() + 1).padStart(2, '0');
-        const dias = String(date.getDate()).padStart(2, '0');
+        const dias = String(date.getDate() + 1).padStart(2, '0');
         return `${año}-${mes}-${dias}`;
     };
 
@@ -88,7 +105,7 @@ const AgregarPersona = () => {
                     </div>
 
                     <div className="mb-3 form-check">
-                        <input type="checkbox" className="form-check-input" name="donanteDeOrganos" checked={persona.donanteDeOrganos} onChange={cambio} />
+                        <input type="checkbox" className="form-check-input" name="donanteDeOrganos" checked={persona.donanteDeOrganos} onChange={() => setPersona({ ...persona, donanteDeOrganos: !persona.donanteDeOrganos })} />
                         <label className="form-check-label">¿Es donante de órganos?</label>
                     </div>
 

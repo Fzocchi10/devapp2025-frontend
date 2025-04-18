@@ -21,6 +21,23 @@ export const ModificarPersona = () => {
     const [modificada, setModificada] = useState<boolean>(false);
 
     const modificar = async () => {
+        const regexNombreApellido = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/;
+        const regexDni = /^\d+$/;
+
+        if (persona.nombre && !regexNombreApellido.test(persona.nombre)) {
+            setError("El nombre solo debe contener letras.");
+            return;
+        }
+
+        if (persona.apellido && !regexNombreApellido.test(persona.apellido)) {
+            setError("El apellido solo debe contener letras.");
+            return;
+            }
+
+        if (persona.dni && !regexDni.test(persona.dni)) {
+            setError("El DNI solo debe contener números.");
+            return;
+        }
         try {
             await apiClient.put(MODIFICAR_PERSONA, persona);
             setModificada(true);

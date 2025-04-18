@@ -23,6 +23,13 @@ export const ModificarAuto = () => {
     const [modificado, setModificado] = useState<boolean>(false);
 
     const modificar = async () => {
+        const RegexPatente = /^([A-Za-z]{3}\d{3}|[A-Za-z]{2}\d{3}[A-Za-z]{2})$/;
+        
+        if(auto.patente && !RegexPatente.test(auto?.patente)){
+            setError("Patente no valida, formato correcto AAA000 o AA000AA");
+            return;
+        }
+        
         try {
             await apiClient.put(MODIFICAR_AUTO, {
                 ...auto,
