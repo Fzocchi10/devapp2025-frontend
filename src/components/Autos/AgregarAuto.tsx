@@ -24,6 +24,12 @@ export const AgregarAuto = () => {
     const [agregada, setAgregada] = useState<boolean>(false);
 
     const agregar = async () => {
+        const RegexPatente = /^([A-Za-z]{3}\d{3}|[A-Za-z]{2}\d{3}[A-Za-z]{2})$/;
+        
+        if(auto.patente && !RegexPatente.test(auto?.patente)){
+            setError("Patente no valida, formato correcto AAA000 o AA000AA");
+            return;
+        }
         try {
             await apiClient.post(AGREGAR_AUTO, {
                 ...auto,
