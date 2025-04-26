@@ -1,5 +1,5 @@
 export interface PropsBotones {
     entidad: string,
-    id: string,
+    id: string | undefined,
     
 }

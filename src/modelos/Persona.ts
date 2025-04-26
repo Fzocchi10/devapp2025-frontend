@@ -7,7 +7,7 @@ export enum Genero {
 }
 
 export type Persona = {
-    id?: number,
+    id?: string,
     nombre : string,
     apellido : string,
     dni : string,
@@ -18,7 +18,7 @@ export type Persona = {
 }
 
 export type PersonaConID = {
-    id: number,
+    id: string,
     nombre : string,
     apellido : string,
     dni : string,
