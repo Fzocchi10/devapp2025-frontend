@@ -4,6 +4,7 @@ import apiClient from "../apiClient/apiClient";
 import { useNavigate, useParams } from "react-router-dom";
 import { Navbar } from "../Navbar/Navbar";
 import { FormularioAuto } from "./FormularioAuto";
+import { UUID } from 'crypto';
 
 export const AgregarAuto = () => {
     const { id } = useParams();
@@ -18,7 +19,7 @@ export const AgregarAuto = () => {
         color: '',
         numeroChasis: '',
         motor: '',
-        dueñoId: Number(id)
+        dueñoId: id as UUID
     });
 
     const [error, setError] = useState<string>('');
@@ -81,10 +82,6 @@ export const AgregarAuto = () => {
                             nombreBoton="Agregar"
                             error={error}
                         />
-
-                        <div className="mt-3 text-center">
-                            {error && <div className="alert alert-danger">{error}</div>}
-                        </div>
                     </div>
                 </div>
             </div>
