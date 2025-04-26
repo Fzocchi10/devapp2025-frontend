@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom"
+import { PropsBotones } from "../Props/PropsInterfaces"
 
 
-export const BotonAgregarAuto= ({id}) => {
+export const BotonAgregarAuto:React.FC<PropsBotones> = ({id}) => {
     return(
         <>
         <Link to={`/autos/agregar/${id}`}>
