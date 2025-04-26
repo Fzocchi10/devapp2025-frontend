@@ -99,7 +99,10 @@ export const ModificarPersona = () => {
                 persona={persona}
                 onChange={cambio}
                 onSubmit={(e) => {e.preventDefault(); modificar()}}
-                donanteDeOrganos={() => ({ ...persona, donanteDeOrganos: !persona.donanteDeOrganos })}
+                donanteDeOrganos={() => { setPersona(prev => ({
+                    ...prev,
+                    donanteDeOrganos: !prev.donanteDeOrganos
+                  }))}}
                 nombreBoton="Modificar"
                 error={error}
             />

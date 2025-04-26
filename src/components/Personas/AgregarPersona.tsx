@@ -84,7 +84,10 @@ const AgregarPersona = () => {
                         persona={persona}
                         onChange={cambio}
                         onSubmit={(e) => {e.preventDefault(); agregar()}}
-                        donanteDeOrganos={() => ({ ...persona, donanteDeOrganos: !persona.donanteDeOrganos })}
+                        donanteDeOrganos={() => { setPersona(prev => ({
+                            ...prev,
+                            donanteDeOrganos: !prev.donanteDeOrganos
+                          }))}}
                         nombreBoton="Agregar"
                         error={error}
                         />
