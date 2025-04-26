@@ -7,7 +7,7 @@ export type Auto = {
     color: string,
     numeroChasis: string,
     motor: string,
-    dueñoId?: number;
+    dueñoId?: string;
 }
 
 export type AutoAgregar = {
@@ -18,7 +18,7 @@ export type AutoAgregar = {
     color?: string,
     numeroChasis?: string,
     motor?: string,
-    dueñoId?: number;
+    dueñoId?: string;
 }
 
 export type AutoInfo = {
