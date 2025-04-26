@@ -27,12 +27,3 @@ export type PersonaConID = {
     donanteDeOrganos: boolean,
     autos: Auto[]
   }
-
-export type PersonaModificar = {
-    nombre? : string ,
-    apellido? : string ,
-    dni? : string ,
-    fechaNacimiento?: Date,
-    genero?: Genero ,
-    donanteDeOrganos?: boolean ,
-}

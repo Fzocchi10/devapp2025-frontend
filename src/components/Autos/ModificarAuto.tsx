@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { AutoModificar } from "../../modelos/Auto";
+import { useEffect, useState } from "react";
+import { Auto } from "../../modelos/Auto";
 import apiClient from "../apiClient/apiClient";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Navbar } from "../Navbar/Navbar";
@@ -8,19 +8,35 @@ export const ModificarAuto = () => {
     const { id } = useParams();
     const MODIFICAR_AUTO = `/autos/${id}`;
     const navegar = useNavigate();
+    const [encontrado,setEncontrado] = useState<boolean>(false);
 
-    const [auto, setAuto] = useState<AutoModificar>({
-        marca: undefined,
-        modelo: undefined,
-        año: undefined, 
-        patente: undefined,
-        color: undefined,
-        numeroChasis: undefined,
-        motor: undefined,
+    const [auto, setAuto] = useState<Auto>({
+        marca: '',
+        modelo: '',
+        año: 0, 
+        patente: '',
+        color: '',
+        numeroChasis: '',
+        motor: ''
     });
 
     const [error, setError] = useState<string>('');
     const [modificado, setModificado] = useState<boolean>(false);
+
+    useEffect(() => {
+        const obtenerAuto = async () => {
+            try {
+                const res = await apiClient.get<Auto>(MODIFICAR_AUTO);
+                const data = res.data;
+                setAuto(data);
+                setEncontrado(true);
+            } catch (err){
+                setError("No se pudo cargar el auto.");
+                setEncontrado(false);
+            }
+        };
+        obtenerAuto();
+    }, [id])
 
     const modificar = async () => {
         const RegexPatente = /^([A-Za-z]{3}\d{3}|[A-Za-z]{2}\d{3}[A-Za-z]{2})$/;
