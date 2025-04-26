@@ -1,5 +1,5 @@
 export type Auto = {
-    id?: number,
+    id?: string,
     marca: string,
     modelo : string,
     año: number,
@@ -22,7 +22,7 @@ export type AutoAgregar = {
 }
 
 export type AutoInfo = {
-    id: number,
+    id: string,
     marca: string,
     modelo : string,
     año: number,

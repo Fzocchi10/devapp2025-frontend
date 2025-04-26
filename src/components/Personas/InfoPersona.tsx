@@ -67,14 +67,14 @@ const InfoPersona = () => {
                             <p><strong>Nombre:</strong> {persona?.nombre}</p>
                             <p><strong>Apellido:</strong> {persona?.apellido}</p>
                             <p><strong>DNI:</strong> {persona?.dni}</p>
-                            <p><strong>Fecha de nacimiento:</strong> {dateAText(persona?.fechaNacimiento)}</p>
+                            <p><strong>Fecha de nacimiento:</strong> {dateAText(persona?.fechaNacimiento ? persona?.fechaNacimiento : '')}</p>
                             <p><strong>Es donante:</strong> {String(persona?.donanteDeOrganos) === "true" ? 'Sí' : 'No'}</p>
                             <p><strong>Género:</strong> {persona?.genero}</p>
                         </div>
                     </div>
 
                     <div className="d-flex justify-content-center mb-4">
-                        <BotonAgregarAuto id={persona?.id} />
+                        <BotonAgregarAuto entidad="autos" id={persona?.id} />
                     </div>
 
                     <div className="card shadow p-4">
