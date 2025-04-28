@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = "https://devapp2025-backend-franco-zocchi.up.railway.app";
+const baseURL = "http://localhost:3000";
 
 const apiClient = axios.create({
   baseURL: baseURL,
