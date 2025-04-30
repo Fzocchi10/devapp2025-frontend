@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-const baseURL = "devapp2025-backend-production.up.railway.app/";
-
 const apiClient = axios.create({
-  baseURL: baseURL,
+  baseURL: import.meta.env.VITE_BACKEND_URL,
   headers: {
     'Content-Type': 'application/json',
   },
