@@ -6,7 +6,7 @@ export const Navbar = () => {
   
           <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <a className="nav-link" href="/Home">Home</a>
+              <a className="nav-link" href="/">Home</a>
               <a className="nav-link" href="/personas">Personas</a>
               <a className="nav-link" href="/autos">Autos</a>
             </div>
