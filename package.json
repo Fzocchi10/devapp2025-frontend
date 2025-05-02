@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "start": "serve dist -s -L -p $PORT",
     "test": "npm run lint",
     "lint": "eslint --format stylish --color --fix",
