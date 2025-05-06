@@ -31,7 +31,7 @@ export const EliminarAuto= () => {
                 <div className="col-md-6">
                     <div className="card shadow p-4 text-center">
                         <h2 className="mb-3">Eliminar Auto</h2>
-                        <p>¿Estás seguro de que deseas eliminar el auto con ID: {id}?</p>
+                        <p>¿Estás seguro de que deseas eliminar el auto?</p>
                         
                         <div className="d-flex justify-content-center gap-3 mt-4">
                             <button onClick={eliminar} className="btn btn-primary">Confirmar</button>

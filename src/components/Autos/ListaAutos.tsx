@@ -26,7 +26,7 @@ const ListaAutos = () => {
           <Navbar />
           {error}
           <h2 className="text-center my-4">Lista de Autos</h2>
-          <TablaAuto autos={autos}/>
+          <TablaAuto autos={autos} cantidadE={8}/>
         </>
       );
 }

@@ -59,7 +59,7 @@ const InfoPersona = () => {
                 <div className="alert alert-danger text-center">{error}</div>
             )}
 
-            <div className="row justify-content-center">
+            <div className="row justify-content-center pb-5">
                 <div className="col-md-8">
                     <div className="card shadow p-4 mb-4">
                         <h3 className="card-title text-center mb-4">Datos de la Persona</h3>
@@ -79,7 +79,7 @@ const InfoPersona = () => {
 
                     <div className="card shadow p-4">
                         <h4 className="card-title text-center mb-3">Listado de Autos</h4>
-                        <TablaAuto autos={autos} />
+                        <TablaAuto autos={autos} cantidadE={3}/>
                     </div>
                 </div>
             </div>

@@ -4,10 +4,12 @@ import { PersonaConID } from "../../modelos/Persona";
 import { Navbar } from "../Navbar/Navbar";
 import { BotonAgregarPersona } from "../Botones/BotonAgregarPersona";
 import { AccionesTabla } from "../Botones/AccionesTabla";
+import Paginacion from "../Paginacion/Paginacion";
 
 const ListaPersonas = () => {
     const OBTENERPERSONAS = '/persona';
     const [personas, setPersonas] = useState<PersonaConID[]>([]);
+    const [personasPaginadas, setPersonasPaginadas] = useState<PersonaConID[]>([]);
     const [error, setError] = useState<string>("");
 
     const obtenerPersonas = async () => {
@@ -49,7 +51,7 @@ const ListaPersonas = () => {
                 </tr>
               </thead>
               <tbody>
-                {personas.map((persona) => (
+                {personasPaginadas.map((persona) => (
                   <tr key={persona.id}>
                     <td className="text-center">{persona.dni}</td>
                     <td className="text-center">{persona.nombre}</td>
@@ -61,6 +63,9 @@ const ListaPersonas = () => {
                 ))}
               </tbody>
             </table>
+            <div className="fixed-bottom start-0 w-100 bg-white py-3 border-top">
+              <Paginacion elementos={personas} cantidad={10} onPaginaChange={setPersonasPaginadas}/>
+            </div>
             </>
           )}
         </>
