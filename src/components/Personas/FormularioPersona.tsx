@@ -19,10 +19,10 @@ export const FormularioPersona: React.FC<Props> = ({
     error
 }) => {
     const dateAText = (date: Date) => {
-        const año = date.getFullYear();
+        const anio = date.getFullYear();
         const mes = String(date.getMonth() + 1).padStart(2, '0');
         const dias = String(date.getDate()).padStart(2, '0');
-        return `${año}-${mes}-${dias}`;
+        return `${anio}-${mes}-${dias}`;
     };
 
     return (

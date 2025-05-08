@@ -27,7 +27,7 @@ export const TablaAuto = ({ autos, cantidadE }: { autos: Auto[], cantidadE: numb
                                 <td className="text-center">{auto.patente}</td>
                                 <td className="text-center">{auto.marca}</td>
                                 <td className="text-center">{auto.modelo}</td>
-                                <td className="text-center">{auto.año}</td>
+                                <td className="text-center">{auto.anio}</td>
                                 <td className="text-center">
                                     <AccionesTabla entidad={"autos"} id={auto.id} />
                                 </td>

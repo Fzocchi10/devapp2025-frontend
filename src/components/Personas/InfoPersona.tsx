@@ -36,10 +36,10 @@ const InfoPersona = () => {
 
       const dateAText = (date: string | Date) => {
         const fecha = new Date(date);
-        const año = fecha.getFullYear();
+        const anio = fecha.getFullYear();
         const mes = String(fecha.getMonth() + 1).padStart(2, '0');
         const dia = String(fecha.getDate()).padStart(2, '0');
-        return `${dia}-${mes}-${año}`;
+        return `${dia}-${mes}-${anio}`;
     };
 
 
