@@ -36,10 +36,10 @@ const InfoPersona = () => {
 
       const dateAText = (date: string | Date) => {
         const fecha = new Date(date);
-        const año = fecha.getFullYear();
+        const anio = fecha.getFullYear();
         const mes = String(fecha.getMonth() + 1).padStart(2, '0');
         const dia = String(fecha.getDate()).padStart(2, '0');
-        return `${dia}-${mes}-${año}`;
+        return `${dia}-${mes}-${anio}`;
     };
 
 
@@ -59,7 +59,7 @@ const InfoPersona = () => {
                 <div className="alert alert-danger text-center">{error}</div>
             )}
 
-            <div className="row justify-content-center">
+            <div className="row justify-content-center pb-5">
                 <div className="col-md-8">
                     <div className="card shadow p-4 mb-4">
                         <h3 className="card-title text-center mb-4">Datos de la Persona</h3>
@@ -79,7 +79,7 @@ const InfoPersona = () => {
 
                     <div className="card shadow p-4">
                         <h4 className="card-title text-center mb-3">Listado de Autos</h4>
-                        <TablaAuto autos={autos} />
+                        <TablaAuto autos={autos} cantidadE={3}/>
                     </div>
                 </div>
             </div>

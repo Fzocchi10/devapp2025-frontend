@@ -2,34 +2,34 @@ export type Auto = {
     id?: string,
     marca: string,
     modelo : string,
-    año: number,
+    anio: number,
     patente : string,
     color: string,
     numeroChasis: string,
     motor: string,
-    dueñoId?: string;
+    duenioId?: string;
 }
 
 export type AutoAgregar = {
     marca?: string,
     modelo? : string,
-    año?: number,
+    anio?: number,
     patente ?: string,
     color?: string,
     numeroChasis?: string,
     motor?: string,
-    dueñoId?: string;
+    duenioId?: string;
 }
 
 export type AutoInfo = {
     id: string,
     marca: string,
     modelo : string,
-    año: number,
+    anio: number,
     patente : string,
     color: string,
     numeroChasis: string,
     motor: string,
-    dueño: string;
+    duenio: string;
 }
 

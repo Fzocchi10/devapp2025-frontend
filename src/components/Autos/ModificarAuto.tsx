@@ -14,7 +14,7 @@ export const ModificarAuto = () => {
     const [auto, setAuto] = useState<Auto>({
         marca: '',
         modelo: '',
-        año: 0, 
+        anio: 0, 
         patente: '',
         color: '',
         numeroChasis: '',
@@ -49,7 +49,7 @@ export const ModificarAuto = () => {
         try {
             await apiClient.put(MODIFICAR_AUTO, {
                 ...auto,
-                año: Number(auto.año),
+                anio: Number(auto.anio),
             });
             navegar(`/autos/info/${id}`)
             setError('');
@@ -66,7 +66,7 @@ export const ModificarAuto = () => {
 
     const cambio = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
-        if(name == "año"){
+        if(name == "anio"){
             setAuto((prevAuto) => ({
                 ...prevAuto,
                 [name] : Number(value)

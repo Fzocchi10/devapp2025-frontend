@@ -14,12 +14,12 @@ export const AgregarAuto = () => {
     const [auto, setAuto] = useState<Auto>({
         marca: '',
         modelo: '',
-        año: 0, 
+        anio: 0, 
         patente: '',
         color: '',
         numeroChasis: '',
         motor: '',
-        dueñoId: id as UUID
+        duenioId: id as UUID
     });
 
     const [error, setError] = useState<string>('');
@@ -34,7 +34,7 @@ export const AgregarAuto = () => {
         try {
             await apiClient.post(AGREGAR_AUTO, {
                 ...auto,
-                año: Number(auto.año),
+                anio: Number(auto.anio),
             });
             navegar(`/personas/info/${id}`)
             setError('');
@@ -51,7 +51,7 @@ export const AgregarAuto = () => {
 
     const cambio = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
-        if(name == "año"){
+        if(name == "anio"){
             setAuto((prevAuto) => ({
                 ...prevAuto,
                 [name] : Number(value)

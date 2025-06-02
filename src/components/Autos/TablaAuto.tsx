@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { Auto } from "../../modelos/Auto"
 import { AccionesTabla } from "../Botones/AccionesTabla"
+import Paginacion from "../Paginacion/Paginacion"
 
-export const TablaAuto = ({ autos }: { autos: Auto[] }) => {
+export const TablaAuto = ({ autos, cantidadE }: { autos: Auto[], cantidadE: number }) => {
+    const [autosPaginados, setAutosPaginados] = useState<Auto[]>([]);
+
     return (
         <>
             {autos.length === 0 ? (
@@ -18,20 +22,24 @@ export const TablaAuto = ({ autos }: { autos: Auto[] }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {autos.map((auto) => (
+                        {autosPaginados.map((auto) => (
                             <tr key={auto.id}>
                                 <td className="text-center">{auto.patente}</td>
                                 <td className="text-center">{auto.marca}</td>
                                 <td className="text-center">{auto.modelo}</td>
-                                <td className="text-center">{auto.año}</td>
+                                <td className="text-center">{auto.anio}</td>
                                 <td className="text-center">
                                     <AccionesTabla entidad={"autos"} id={auto.id} />
                                 </td>
                             </tr>
                         ))}
                     </tbody>
-                </table>
+                </table>  
             )}
+            <div className="fixed-bottom-0 start-0 w-100 bg-white py-2 border-top">
+                <Paginacion elementos={autos} cantidad={cantidadE} onPaginaChange={setAutosPaginados} />
+            </div>
+            
         </>
     )
 }

@@ -45,8 +45,8 @@ export const FormularioAuto: React.FC<Props> = ({
                                 <input
                                     type="text"
                                     className="form-control"
-                                    name="año"
-                                    value={auto.año}
+                                    name="anio"
+                                    value={auto.anio}
                                     onChange={onChange}
                                 />
                             </div>
